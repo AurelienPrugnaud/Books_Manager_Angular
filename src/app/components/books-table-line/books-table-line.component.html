@@ -1,0 +1,28 @@
+<td>{{id}}</td>
+<td>{{title}}</td>
+<td>{{author}}</td>
+<td>{{status}}</td>
+<td class="d-flex justify-content-between">
+  <button
+    class="btn btn-outline-dark me-2"
+    (click)="onClickSwitchStatus()">
+      Basculer en {{nextStatus | lowercase}}
+  </button>
+  <div>
+    <button
+      class="btn btn-secondary me-2"
+      [routerLink]="['/books', id]">
+        Détails
+    </button>
+    <button
+    class="btn btn-warning me-2"
+    [routerLink]="['/books', id, 'edit']">
+      Éditer
+    </button>
+    <button
+      class="btn btn-danger"
+      (click)="onClickDeleteBook()">
+        Supprimer
+    </button>
+  </div>
+</td>

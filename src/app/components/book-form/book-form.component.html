@@ -1,0 +1,65 @@
+<div class="row col-6 card shadow mx-auto mt-3">
+
+  <h3 class="text-center mt-3">{{title}}</h3>
+
+  <form
+    class="my-3"
+    [formGroup]="bookForm"
+    (ngSubmit)="onSubmitBookForm()">
+
+    <div class="mb-3">
+      <label for="author">Auteur</label>
+      <input
+        id="author"
+        formControlName="author"
+        class="form-control"
+        placeholder="Auteur"
+        [(ngModel)]="book.author">
+
+      <app-errors-form
+        [control]="this.bookForm.controls.author"
+        controlLabel="Auteur">
+      </app-errors-form>
+    </div>
+
+    <div class="mb-3">
+      <label for="title">Titre</label>
+      <input
+        id="title"
+        formControlName="title"
+        class="form-control"
+        placeholder="Titre"
+        [(ngModel)]="book.title">
+
+      <app-errors-form
+        [control]="this.bookForm.controls.title"
+        controlLabel="Titre">
+      </app-errors-form>
+    </div>
+
+    <div class="mb-3">
+      <label for="status">Status</label>
+      <select
+        id="status"
+        formControlName="status"
+        class="form-control"
+        [(ngModel)]="book.status">
+          <option value="Libre" selected>Libre</option>
+          <option value="Pris">Pris</option>
+      </select>
+    </div>
+
+    <button
+      class="d-grid col-4 mx-auto btn btn-dark"
+      type="submit"
+      [disabled]="bookForm.invalid">
+        {{submitLabel}}
+    </button>
+
+  </form>
+
+  <a routerLink="/home" class="text-center text-dark mb-2">
+    Retour
+  </a>
+
+</div>

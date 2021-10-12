@@ -1,0 +1,98 @@
+<div class="row mt-5">
+
+  <div class="col-6 card shadow mx-auto p-3">
+
+    <h3 class="text-center">Connexion</h3>
+
+    <div
+      *ngIf="errMsg"
+      class="alert alert-danger my-2">
+        {{errMsg}}
+    </div>
+
+    <!-- 1ere manière de faire le form
+      <form #authForm="ngForm" (ngSubmit)="onSubmitAuthForm(authForm)">
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Email"
+          required
+          ngModel>
+      </div>
+
+      <div class="mb-3">
+        <label for="password">Mot de passe</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Mot de passe"
+          required
+          ngModel>
+      </div>
+
+      <div class="row col-4 mx-auto">
+        <button
+          type="submit"
+          class="btn btn-dark btn-lg"
+          [disabled]="authForm.invalid">
+            Me connecter
+        </button>
+      </div>
+    </form> -->
+
+<!--1ere manière "avancée" de faire le form-->
+    <form #authForm="ngForm" (ngSubmit)="onSubmitAuthForm()">
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Email"
+          required
+          #emailInput="ngModel"
+          [(ngModel)]="email">
+
+        <app-errors-form
+          [control]="emailInput"
+          controlLabel="Email">
+        </app-errors-form>
+      </div>
+
+      <div class="mb-3">
+        <label for="password">Mot de passe</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Mot de passe"
+          required
+          #passwordInput="ngModel"
+          [(ngModel)]="password">
+
+        <app-errors-form
+          [control]="passwordInput"
+          controlLabel="Password">
+        </app-errors-form>
+      </div>
+
+      <div class="row col-4 mx-auto">
+        <button
+          type="submit"
+          class="btn btn-dark btn-lg"
+          [disabled]="authForm.invalid">
+            Me connecter
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>

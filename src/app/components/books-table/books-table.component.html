@@ -1,0 +1,21 @@
+<table class="table text-center">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      app-books-table-line
+      *ngFor="let book of books"
+      [id]="book.id"
+      [title]="book.title"
+      [author]="book.author"
+      [status]="book.status">
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,14 @@
+<div class="text-center my-3">
+  <button class="btn btn-dark me-2 text-uppercase"
+    (click)="onClickSwitchAllStatus('Pris')">
+      Pris
+  </button>
+  <button class="btn btn-dark text-uppercase"
+    (click)="onClickSwitchAllStatus('Libre')">
+      Libre
+  </button>
+</div>
+
+<app-books-table
+  [books]="books"
+></app-books-table>
